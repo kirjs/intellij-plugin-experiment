@@ -511,7 +511,7 @@ private Stack<Context> state = new Stack<>();
             }
           case 15: break;
           case 4: 
-            { System.out.println("<Array>");  state.push(Context.ARRAY); return BebeTypes.START_ARRAY;
+            { state.push(Context.ARRAY); return BebeTypes.START_ARRAY;
             }
           case 16: break;
           case 5: 
@@ -519,7 +519,7 @@ private Stack<Context> state = new Stack<>();
             }
           case 17: break;
           case 6: 
-            { System.out.println("<Object>"); yybegin(KEY); state.push(Context.OBJECT); return BebeTypes.START_CURLY;
+            { yybegin(KEY); state.push(Context.OBJECT); return BebeTypes.START_CURLY;
             }
           case 18: break;
           case 7: 
