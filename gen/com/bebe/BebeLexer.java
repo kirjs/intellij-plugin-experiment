@@ -515,7 +515,7 @@ private Stack<Context> state = new Stack<>();
             }
           case 16: break;
           case 5: 
-            { System.out.println("</Array>"); state.pop(); return BebeTypes.END_ARRAY;
+            { if(!state.empty()) { state.pop(); } return BebeTypes.END_ARRAY;
             }
           case 17: break;
           case 6: 
@@ -523,7 +523,7 @@ private Stack<Context> state = new Stack<>();
             }
           case 18: break;
           case 7: 
-            { System.out.println("</Object>"); state.pop(); return BebeTypes.END_CURLY;
+            { if(!state.empty()) { state.pop(); } return BebeTypes.END_CURLY;
             }
           case 19: break;
           case 8: 

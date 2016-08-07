@@ -40,9 +40,9 @@ KEY=\"[^\"]+\"
 
 <YYINITIAL> {
 \[                              { System.out.println("<Array>");  state.push(Context.ARRAY); return BebeTypes.START_ARRAY; }
-\]                              { System.out.println("</Array>"); state.pop(); return BebeTypes.END_ARRAY; }
+\]                              { if(!state.empty()) { state.pop(); } return BebeTypes.END_ARRAY; }
 \{                              { System.out.println("<Object>"); yybegin(KEY); state.push(Context.OBJECT); return BebeTypes.START_CURLY; }
-\}                              { System.out.println("</Object>"); state.pop(); return BebeTypes.END_CURLY; }
+\}                              { if(!state.empty()) { state.pop(); } return BebeTypes.END_CURLY; }
 null                            { return BebeTypes.NULL; }
 {STRING}                        { return BebeTypes.STRING_VALUE; }
 {NUMBER}                        { return BebeTypes.NUMBER; }
