@@ -72,8 +72,8 @@ class BebeLexer implements FlexLexer {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\2\0\1\1\1\2\1\3\1\1\1\4\1\5\1\6"+
-    "\1\7\1\1\1\10\1\11\1\1\1\0\1\12\2\0"+
-    "\1\13\1\0\1\14";
+    "\1\7\1\1\1\10\1\11\1\1\1\0\1\12\3\0"+
+    "\1\13\1\14";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[21];
@@ -103,7 +103,7 @@ class BebeLexer implements FlexLexer {
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\16\0\34\0\52\0\70\0\106\0\34\0\34"+
     "\0\34\0\34\0\124\0\34\0\34\0\142\0\106\0\34"+
-    "\0\160\0\142\0\34\0\176\0\34";
+    "\0\160\0\176\0\214\0\34\0\34";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[21];
@@ -132,11 +132,12 @@ class BebeLexer implements FlexLexer {
     "\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12"+
     "\1\13\2\3\1\14\1\15\1\0\1\3\1\4\1\3"+
     "\1\16\11\3\20\0\1\4\16\0\1\5\13\0\3\17"+
-    "\1\20\12\17\11\0\1\21\4\0\3\22\1\23\12\22"+
-    "\12\0\1\24\15\0\1\25\3\0";
+    "\1\20\12\17\11\0\1\21\4\0\3\22\1\0\12\22"+
+    "\12\0\1\23\3\0\3\22\1\24\12\22\12\0\1\25"+
+    "\3\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[140];
+    int [] result = new int[154];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -175,7 +176,7 @@ class BebeLexer implements FlexLexer {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\2\0\1\11\3\1\4\11\1\1\2\11\1\1\1\0"+
-    "\1\11\2\0\1\11\1\0\1\11";
+    "\1\11\3\0\2\11";
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[21];
@@ -514,7 +515,7 @@ private Stack<Context> state = new Stack<>();
             }
           case 16: break;
           case 5: 
-            { System.out.println("</Array>"); state.pop(); return BebeTypes.END_ARRAY;
+            { if(!state.empty()) { state.pop(); } return BebeTypes.END_ARRAY;
             }
           case 17: break;
           case 6: 
@@ -522,7 +523,7 @@ private Stack<Context> state = new Stack<>();
             }
           case 18: break;
           case 7: 
-            { System.out.println("</Object>"); state.pop(); return BebeTypes.END_CURLY;
+            { if(!state.empty()) { state.pop(); } return BebeTypes.END_CURLY;
             }
           case 19: break;
           case 8: 
