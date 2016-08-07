@@ -1,0 +1,34 @@
+{
+  parserClass="com.bebe.parser.BebeParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Bebe"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.bebe.psi"
+  psiImplPackage="com.bebe.psi.impl"
+
+  elementTypeHolderClass="com.bebe.psi.BebeTypes"
+  elementTypeClass="com.bebe.psi.BebeElementType"
+  tokenTypeClass="com.bebe.psi.BebeTokenType"
+}
+
+
+bebeFile ::= value
+
+object ::= START_CURLY properties END_CURLY
+
+array ::= START_ARRAY values END_ARRAY
+
+values ::=  value (COMMA value)* | value?
+
+properties ::= property (COMMA property)* | property?
+
+property ::= ((KEY | STRING_VALUE) SEPARATOR value)
+
+value ::= NUMBER|NULL|STRING_VALUE|object|array
+
+
+
+
+
